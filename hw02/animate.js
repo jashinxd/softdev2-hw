@@ -21,6 +21,9 @@ var circle = function(e) {
     } else {
 	radius = radius - 1;
     }
+    if (radius < c.width/2 || radius == 0) {
+	growing = !growing;
+    }
     window.requestAnimationFrame(circle);
 };
 
