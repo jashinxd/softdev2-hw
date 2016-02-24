@@ -5,7 +5,7 @@ var c = document.getElementById("playground");
 // Button to start the circle animation
 var circleB = document.getElementById("circle");
 // Button to start the logo animation
-var logo = document.getElementById("logo");
+var logoB = document.getElementById("logo");
 // Button to stop the animation
 var stopB = document.getElementById("stop");
 // Get 2d canvas
@@ -14,19 +14,23 @@ var ctx = c.getContext("2d");
 var requestID;
 
 // Getting DVD Logo
-var logo = newImage();
+var logo = new Image();
 logo.src="logo.jpg";
+console.log(logo);
 // width and height of logo
-var logoWidth = logo.clientWidth;
-var logoHeight = logo.clientHeight;
+var logoWidth = 80;
+var logoHeight = 40;
+
 // Current x and y coords of logo
-var x = 
+var x = c.width/2;
+var y = c.height/2;
 // Change in x and change in y
 var dx = 1;
 var dy = 1;
 
 ctx.fillStyle="#0000FF";
 
+// Radius of circle and state of circle growth
 var radius = 0;
 var growing = true;
 
@@ -62,28 +66,30 @@ var circle = function(e) {
     requestID = window.requestAnimationFrame(circle);
 };
 
-var drawLogo = function() {
-    ctx.drawImage(logo, x, y, logoWidth, logoheight);
-}
-
-var logo = function(e) {
+var animateLogo = function(e) {
+    // Clears the canvas
     ctx.clearRect(0, 0, c.width, c.height);
-    drawLogo();
+    // Draws image with upper left corner at center of canvas
+    ctx.drawImage(logo, x, y, logoWidth, logoHeight);
+    // Change direction of movement when logo hits edge of canvas
     if (x == 0 || x == c.width - logoWidth) {
-	dx *= 1;
-    } else if (y == 0 || y == c.height - logoHeigth) {
-	dx *= 1;
+	dx *= -1;
+    } if (y == 0 || y == c.height - logoHeight) {
+	dy *= -1;
     }
+    // Increment x and y coords by dx and dy
     x += dx
     y += dy
-    requestID = window.requestAnimationFrame(logo);
-}    
+    // Repeat the process
+    requestID = window.requestAnimationFrame(animateLogo);
+};    
 
+// Function to stop any animation on screen
 var stop = function(e) {
     requestID = window.cancelAnimationFrame(requestID);
-}
+};
 
-// Adds events to circle button.
+// Adds events to buttons.
 circleB.addEventListener('click', circle);
-logo.addEventListener('click', logo);
+logoB.addEventListener('click', animateLogo);
 stopB.addEventListener('click', stop);
