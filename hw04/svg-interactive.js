@@ -94,7 +94,7 @@ var dvdAnimate = function(e) {
     dvd.setAttribute("height", logoHeight);
     dvd.setAttribute("x", x);
     dvd.setAttribute("y", y);
-    dvd.setAttribute("xlink:href", logoSrc);
+    dvd.setAttributeNS("http://www.w3.org/1999/xlink", "href", logoSrc);
     var dvdAnimateCode = function() {
 	dvd.setAttribute("x", x);
 	dvd.setAttribute("y", y);
