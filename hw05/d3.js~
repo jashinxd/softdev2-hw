@@ -1,0 +1,2 @@
+console.log("Javascript Loaded");
+d3.selectAll("p").style("color", "white");
