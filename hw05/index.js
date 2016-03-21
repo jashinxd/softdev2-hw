@@ -92,6 +92,13 @@ d3.select(".key")
     .text(function(d) {return d;});
 
 // Hardcoded data found online for Republican delegates
+var repCategoryOrder = ["Alabama", "Alaska", "American Samoa", "Arkansas",
+			"Colorado", "DC", "Florida", "Georgia", "Guam", "Hawaii", "Idaho", 
+			"Illiniois","Iowa", "Kansas", "Kentucky", "Louisiana", "Maine",
+			"Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", 
+			"Nevada","New Hampshire","North Carolina", "North Dakota", 
+			"Northern Marianas", "Ohio","Oklahoma","Puerto Rico","South Carolina",
+			"Tennessee","Texas", "Vermont", "Virgin Islands", "Virginia","Wyoming"];
 
 var repStateOrder = ["Alabama", "Alaska", "American Samoa", "Arizona", "Arkansas",
 		    "California", "Colorado", "Connecticut", "Delaware", "DC",
@@ -123,7 +130,7 @@ d3.select(".repPrimaries")
     .data(repStateOrder)
     .enter().append("div")
     .style("background-color", function(d){
-	if (categoryOrder.indexOf(d) != -1)
+	if (repCategoryOrder.indexOf(d) != -1)
 	        return "red"; })
     .style("width",function(d){
 	return scale(repStates[d]) + "px"; })
