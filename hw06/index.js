@@ -79,7 +79,7 @@ for (i = 0; i < repStateOrder.length; i++){
     repStates[repStateOrder[i]] = totalRepDelegs[i];
 }
 
-var state = "rep";
+var state = "dem";
 
 var scale = d3.scale.linear()
     .domain([0,d3.max(totalDemDelegs)])
@@ -95,12 +95,12 @@ d3.select(".primaries")
 	return scale(demStates[d]) + "px"; })
     .text(function(d) {return (d+": " + demStates[d]);})
     .on("click", function() {
-	if (state = "rep") {
+	console.log(state);
+	if (state == "rep") {
             d3.select(".primaries")
-		.data(stateOrder)
+		.selectAll("div")
 		.transition()
 		.duration(1000)
-		.selectAll("div")
 		.style("background-color", function(d){
 		    if (categoryOrder.indexOf(d) != -1)
 			return "steelblue"; })
@@ -110,13 +110,11 @@ d3.select(".primaries")
 	    state = "dem";
 	    d3.select("#title")
 		.text("Democratic Delegates Per State");
-	} else if (state = "dem") {
+	} else if (state == "dem") {
             d3.select(".primaries")
 	    	.transition()
 		.duration(500)
 		.selectAll("div")
-		.data(repStateOrder)
-		.enter().append("div")
 		.style("background-color", function(d){
 		    if (repCategoryOrder.indexOf(d) != -1)
 			return "steelblue"; })
