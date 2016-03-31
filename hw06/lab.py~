@@ -1,0 +1,15 @@
+nums = []
+for x in range(8):
+    nums.append(x)
+
+squares = []
+for x in range(8):
+    nums.append(x**2)
+
+print "[x for x in range(8)]\n"
+print [x for x in range(8)]
+print "\n"
+print "[x*x for x in range(8)]"
+print [x*x for x in range(8)]
+print "[(x, x*x, x*x*x) for x in range(8)]\n"
+print [(x, x*x, x*x*x) for x in range(8)]
