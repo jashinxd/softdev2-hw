@@ -81,7 +81,7 @@ def checkStrength(password):
     lower = [1 for char in password if char in LC_LETTERS]
     number = [1 for char in password if char.isdigit()]
     spec = [1 for char in password if char in SPEC_CHARS]
-    return float(len(upper) + len(number) + len(spec)) / passLen * 10  
+    return int(float(len(upper) + len(number) + len(spec)) / passLen * 10)  
 
 print("checkStrength(\"Hello\")")
 print(checkStrength("Hello"))
