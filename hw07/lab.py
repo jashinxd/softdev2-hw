@@ -21,9 +21,10 @@ print h(1)(3) # Runs h(x) with x = 2 and y = 3
 print h(2)(5) # Runs h(x) with x = 2 and y = 5
 
 b=h(1)
+#print b(3)
 
 # Q3: Which of the four h() calls above would you say also created closures?
-# h(1) and h(2) would create closures.
+# All four  would create closures.
 
 def f(x):
     def g(y):
