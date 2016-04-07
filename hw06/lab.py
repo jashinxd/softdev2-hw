@@ -83,6 +83,26 @@ def checkStrength(password):
     spec = [1 for char in password if char in SPEC_CHARS]
     return int(float(len(upper) + len(number) + len(spec)) / passLen * 10)  
 
+def checkStrength2(p):
+    UC_LETTERS="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    LC_LETTERS=UC_LETTERS.lower()
+    SPEC_CHARS = ".?!&#,;:-_*"
+    NUMERALS = '123456789'
+    l = [1 if x in UC_LETTERS else
+          2 if x in LC_LETTERS else
+           3 if x in NUMERALS else
+            0 for x in p ]
+    return 1 in l and 2 in l and 3 in l
+
+p2 = 'password'
+p3 = 'passw0rd'
+p4 = 'Password'
+
+print p2 + ': ' + str( checkStrength2(p2) )
+print p3 + ': ' + str( checkStrength2(p3) )
+print p4 + ': ' + str( checkStrength2(p4) )
+
+"""
 print("checkStrength(\"Hello\")")
 print(checkStrength("Hello"))
 print("checkStrength(\"12345\")")
@@ -93,3 +113,4 @@ print("checkStrength(\"12345HI\")")
 print(checkStrength("12345HI"))
 print("checkStrength(\"HelloWorld1\")")
 print(checkStrength("HelloWorld1"))
+"""
