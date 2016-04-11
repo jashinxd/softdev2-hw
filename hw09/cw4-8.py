@@ -14,12 +14,12 @@ print closure( -2, 3, 'hello' )
 
 # Timing function
 
-def time(fn):
+def timeThis(fn):
     def timefn( *arg ):
         time1 = time.time()
         fn( *arg )
         time2 = time.time()
-        return "Time elapsed: " + str(time2 - time1)
+        return "Time elapsed: " + str(time2 - time1) + " seconds"
     return timefn
 
 def nameAndArgs(fn):
@@ -29,7 +29,7 @@ def nameAndArgs(fn):
 
 
 @nameAndArgs
-@time
+@timeThis
 def combine(s1, s2, l1, l2):
     return s1 + s2 + str(l1) + str(l2) 
 
