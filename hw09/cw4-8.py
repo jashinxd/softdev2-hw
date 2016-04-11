@@ -28,10 +28,13 @@ def nameAndArgs(fn):
     return retNameAndArgs
 
 
-@nameAndArgs
 @timeThis
 def combine(s1, s2, l1, l2):
     return s1 + s2 + str(l1) + str(l2) 
+
+@nameAndArgs
+def combine(s1, s2, l1, l2):
+    return s1 + s2 + str(l1) + str(l2)
 
 combineEX = combine("Jason", "Shin", ["pizza", 3, 5.2], ['p', 43])
 print combineEX
