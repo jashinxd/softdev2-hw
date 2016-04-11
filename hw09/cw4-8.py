@@ -24,9 +24,7 @@ def timeThis(fn):
 
 def nameAndArgs(fn):
     def retNameAndArgs( *arg ):
-        print *arg
-        l = []
-        return "Name: " + fn.func_name + " Args: " + str(l)
+        return "Name: " + fn.func_name + " Args: " + str(arg)
     return retNameAndArgs
 
 
@@ -40,10 +38,10 @@ print combineEX
 
 #a simple example of applying multiple decorators
 def make_bold(fn):
-    return lambda : "<b>" + fn() + "</b>" # Should return string "<b>fn</b>
+    return lambda : "<b>" + fn() + "</b>" # Should return string "<b>fn</b>"
 
 def make_italic(fn):
-    return lambda : "<i>" + fn() + "</i>" # Should return string "<i>fn</i>
+    return lambda : "<i>" + fn() + "</i>" # Should return string "<i>fn</i>"
 
 @make_bold
 @make_italic
