@@ -24,7 +24,9 @@ def timeThis(fn):
 
 def nameAndArgs(fn):
     def retNameAndArgs( *arg ):
-        return "Name: " + fn.func_name + " Args: " + str(*arg)
+        print *arg
+        l = []
+        return "Name: " + fn.func_name + " Args: " + str(l)
     return retNameAndArgs
 
 

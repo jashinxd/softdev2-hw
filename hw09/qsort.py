@@ -1,6 +1,6 @@
 def qsort(l):
     # Check if length of list == 0
-    if (len(l) == 0):
+    if (len(l) <= 0):
         return l;
     # Pivot is l[0]
     pivot = l[0]
