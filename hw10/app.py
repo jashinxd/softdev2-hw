@@ -8,34 +8,34 @@ def timeThis(fn):
         fn( *arg )
         time2 = time.time()
         return "Time elapsed: " + str(time2 - time1) + " seconds"
-    return timefn
+    print timefn
 
 def nameAndArgs(fn):
     def retNameAndArgs( *arg ):
         return "Name: " + fn.func_name + " Args: " + str(arg)
-    return retNameAndArgs
+    print retNameAndArgs
                                                         
 
 app = Flask(__name__)
 
 # Homepage
 
-@nameAndArgs
-@timeThis
-@app.route("/")
-#@timeThis
 #@nameAndArgs
+#@timeThis
+@app.route("/")
+@timeThis
+@nameAndArgs
 def index():
     return render_template("index.html")
 
 
 
 # Site to choose a movie
-@timeThis
-@nameAndArgs
-@app.route("/quiz", methods=["GET", "POST"])
-#@nameAndArgs
 #@timeThis
+#@nameAndArgs
+@app.route("/quiz", methods=["GET", "POST"])
+@nameAndArgs
+@timeThis
 def quiz(tag="toprated"):
     if tag == "toprated":
         return appextended.topRated()
@@ -43,11 +43,11 @@ def quiz(tag="toprated"):
         return appextended.specMovie(tag)
 
 # Site with the actual quiz
-@timeThis
-@nameAndArgs
-@app.route("/quiz/<tag>", methods=["GET", "POST"])
-#@nameAndArgs
 #@timeThis
+#@nameAndArgs
+@app.route("/quiz/<tag>", methods=["GET", "POST"])
+@nameAndArgs
+@timeThis
 def submission(tag):
     if request.method == "GET": 
         return appextended.specMovie(tag)
