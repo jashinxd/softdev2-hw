@@ -19,6 +19,7 @@ app = Flask(__name__)
 
 # Homepage
 @timeThis
+@nameAndArgs
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -26,6 +27,8 @@ def index():
 
 
 # Site to choose a movie
+@timeThis
+@nameAndArgs
 @app.route("/quiz", methods=["GET", "POST"])
 def quiz(tag="toprated"):
     if tag == "toprated":
@@ -34,6 +37,8 @@ def quiz(tag="toprated"):
         return appextended.specMovie(tag)
 
 # Site with the actual quiz
+@timeThis
+@nameAndArgs
 @app.route("/quiz/<tag>", methods=["GET", "POST"])
 def submission(tag):
     if request.method == "GET": 
