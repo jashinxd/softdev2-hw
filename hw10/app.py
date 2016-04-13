@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import urllib2, json, appextended
+import time
 
 def timeThis(fn):
     def timefn( *arg ):
@@ -18,9 +19,12 @@ def nameAndArgs(fn):
 app = Flask(__name__)
 
 # Homepage
-@timeThis
+
 @nameAndArgs
+@timeThis
 @app.route("/")
+#@timeThis
+#@nameAndArgs
 def index():
     return render_template("index.html")
 
@@ -30,6 +34,8 @@ def index():
 @timeThis
 @nameAndArgs
 @app.route("/quiz", methods=["GET", "POST"])
+#@nameAndArgs
+#@timeThis
 def quiz(tag="toprated"):
     if tag == "toprated":
         return appextended.topRated()
@@ -40,6 +46,8 @@ def quiz(tag="toprated"):
 @timeThis
 @nameAndArgs
 @app.route("/quiz/<tag>", methods=["GET", "POST"])
+#@nameAndArgs
+#@timeThis
 def submission(tag):
     if request.method == "GET": 
         return appextended.specMovie(tag)
